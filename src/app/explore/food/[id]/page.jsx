@@ -1,13 +1,15 @@
 "use client";
 
 import PageBanner from "@/components/shared/PageBanner";
-import Image from "next/image";
+import { useCart } from "@/context/CartContext";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const FoodDetails = () => {
   const { id } = useParams();
+
+  const { addToCart, isInCart } = useCart();
 
   const [foodDetails, setFoodDetails] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -73,7 +75,17 @@ const FoodDetails = () => {
     );
   }
 
-  const { title, foodImg, price, category, area, video } = foodDetails;
+  const {
+    id: foodId,
+    title,
+    foodImg,
+    price,
+    category,
+    area,
+    video,
+  } = foodDetails;
+
+  const added = isInCart(foodId);
 
   return (
     <>
@@ -84,7 +96,11 @@ const FoodDetails = () => {
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
             {/* Image */}
             <div className="relative aspect-square overflow-hidden rounded-3xl">
-              <img src={foodImg} alt={title} fill className="object-cover" />
+              <img
+                src={foodImg}
+                alt={title}
+                className="object-cover w-full h-full"
+              />
             </div>
 
             {/* Details */}
@@ -122,8 +138,16 @@ const FoodDetails = () => {
 
               {/* Actions */}
               <div className="mt-8 flex flex-wrap gap-4">
-                <button className="rounded-xl bg-orange-500 px-7 py-3.5 font-semibold text-white transition hover:bg-orange-600">
-                  Add to Cart
+                <button
+                  onClick={() => addToCart(foodDetails)}
+                  disabled={added}
+                  className={`rounded-xl px-7 py-3.5 font-semibold transition cursor-pointer ${
+                    added
+                      ? "cursor-not-allowed bg-green-100 text-green-500"
+                      : "bg-orange-500 text-white hover:bg-black"
+                  }`}
+                >
+                  {added ? "Added" : "Add to Cart"}
                 </button>
 
                 {video && (
