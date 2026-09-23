@@ -141,10 +141,10 @@ const FoodDetails = () => {
                 <button
                   onClick={() => addToCart(foodDetails)}
                   disabled={added}
-                  className={`rounded-xl px-7 py-3.5 font-semibold transition cursor-pointer ${
+                  className={`rounded-xl px-7 py-3.5 font-semibold transition ${
                     added
                       ? "cursor-not-allowed bg-green-100 text-green-500"
-                      : "bg-orange-500 text-white hover:bg-black"
+                      : "bg-orange-500 text-white hover:bg-black cursor-pointer"
                   }`}
                 >
                   {added ? "Added" : "Add to Cart"}

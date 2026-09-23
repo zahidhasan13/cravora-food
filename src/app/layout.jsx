@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
         <CartProvider>
           <Header />
-          <main>
+          <main className="pb-20 md:pb-0">
             <ProductProvider>{children}</ProductProvider>
           </main>
           <Footer />

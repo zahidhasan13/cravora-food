@@ -1,171 +1,105 @@
+"use client";
+
 import Link from "next/link";
+import React from "react";
+import NavLink from "../NavLink";
+import { useCart } from "@/context/CartContext";
 
-const Footer = () => {
+const Header = () => {
+  const { cartCount } = useCart();
+
   return (
-    <footer className="bg-gray-950 text-gray-300">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-
-          {/* Brand */}
-          <div>
-            <Link
-              href="/"
-              className="text-2xl font-bold tracking-tight text-white"
-            >
-              Cravora<span className="text-orange-500">.</span>
+    <>
+      {/* ================= Desktop Header ================= */}
+      <header className="absolute top-0 left-0 right-0 z-50 py-5 text-white">
+        <div className="max-w-7xl mx-auto px-5 lg:px-0">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="text-3xl md:text-4xl font-bold">
+              Cravora
             </Link>
 
-            <p className="mt-4 max-w-sm text-sm leading-7 text-gray-400">
-              Discover delicious meals, explore new flavors, and find
-              something you'll love with Cravora.
-            </p>
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center gap-5">
+              <NavLink href="/explore">Explore</NavLink>
+              <NavLink href="/categories">Categories</NavLink>
+              <NavLink href="/about">About</NavLink>
+            </nav>
 
-            {/* Social Links */}
-            <div className="mt-6 flex gap-3">
-              <Link
-                href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 text-sm transition hover:bg-orange-500 hover:text-white"
-              >
-                f
-              </Link>
-
-              <Link
-                href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 text-sm transition hover:bg-orange-500 hover:text-white"
-              >
-                X
-              </Link>
-
-              <Link
-                href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 text-sm transition hover:bg-orange-500 hover:text-white"
-              >
-                in
-              </Link>
-            </div>
+            {/* Desktop Cart */}
+            <Link
+              href="/cart"
+              className="hidden md:block relative font-semibold uppercase"
+            >
+              Cart
+              {cartCount > 0 && (
+                <span className="absolute -top-3 -right-3 flex h-5 min-w-5 items-center justify-center rounded-full bg-orange-500 px-1 text-xs font-bold text-white">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
           </div>
+        </div>
+      </header>
+
+      {/* ================= Mobile Bottom Navigation ================= */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-[100] border-t border-white/10 bg-black/90 px-3 pb-[env(safe-area-inset-bottom)] pt-2 backdrop-blur-lg">
+        <div className="mx-auto flex max-w-md items-center justify-around">
+          {/* Home */}
+          <Link
+            href="/"
+            className="flex flex-col items-center gap-1 px-3 py-2 text-xs font-medium text-white/80 transition hover:text-orange-500"
+          >
+            <span className="text-xl">⌂</span>
+            <span>Home</span>
+          </Link>
 
           {/* Explore */}
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
-              Explore
-            </h3>
+          <Link
+            href="/explore"
+            className="flex flex-col items-center gap-1 px-3 py-2 text-xs font-medium text-white/80 transition hover:text-orange-500"
+          >
+            <span className="text-xl">🔍</span>
+            <span>Explore</span>
+          </Link>
 
-            <ul className="mt-5 space-y-3 text-sm">
-              <li>
-                <Link href="/" className="transition hover:text-orange-500">
-                  Home
-                </Link>
-              </li>
+          {/* Categories */}
+          <Link
+            href="/categories"
+            className="flex flex-col items-center gap-1 px-3 py-2 text-xs font-medium text-white/80 transition hover:text-orange-500"
+          >
+            <span className="text-xl">☷</span>
+            <span>Categories</span>
+          </Link>
 
-              <li>
-                <Link
-                  href="/explore"
-                  className="transition hover:text-orange-500"
-                >
-                  Explore Food
-                </Link>
-              </li>
+          {/* Cart */}
+          <Link
+            href="/cart"
+            className="relative flex flex-col items-center gap-1 px-3 py-2 text-xs font-medium text-white/80 transition hover:text-orange-500"
+          >
+            <span className="text-xl">🛒</span>
 
-              <li>
-                <Link
-                  href="/categories"
-                  className="transition hover:text-orange-500"
-                >
-                  Categories
-                </Link>
-              </li>
+            {cartCount > 0 && (
+              <span className="absolute right-1 top-0 flex h-5 min-w-5 items-center justify-center rounded-full bg-orange-500 px-1 text-[10px] font-bold text-white">
+                {cartCount}
+              </span>
+            )}
 
-              <li>
-                <Link
-                  href="/search"
-                  className="transition hover:text-orange-500"
-                >
-                  Search
-                </Link>
-              </li>
-            </ul>
-          </div>
+            <span>Cart</span>
+          </Link>
 
-          {/* Company */}
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
-              Company
-            </h3>
-
-            <ul className="mt-5 space-y-3 text-sm">
-              <li>
-                <Link
-                  href="/about"
-                  className="transition hover:text-orange-500"
-                >
-                  About Us
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/contact" className="transition hover:text-orange-500">
-                  Contact
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/privacy"
-                  className="transition hover:text-orange-500"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  href="/terms"
-                  className="transition hover:text-orange-500"
-                >
-                  Terms & Conditions
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
-              Stay Updated
-            </h3>
-
-            <p className="mt-5 text-sm leading-6 text-gray-400">
-              Get food inspiration and discover what's trending.
-            </p>
-
-            <div className="mt-5 flex overflow-hidden rounded-xl bg-gray-800 p-1">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="min-w-0 flex-1 bg-transparent px-3 py-2 text-sm text-white outline-none placeholder:text-gray-500"
-              />
-
-              <button className="rounded-lg bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600">
-                Join
-              </button>
-            </div>
-          </div>
+          {/* About */}
+          <Link
+            href="/about"
+            className="flex flex-col items-center gap-1 px-3 py-2 text-xs font-medium text-white/80 transition hover:text-orange-500"
+          >
+            <span className="text-xl">ⓘ</span>
+            <span>About</span>
+          </Link>
         </div>
-
-        {/* Bottom */}
-        <div className="mt-14 flex flex-col gap-4 border-t border-gray-800 pt-8 text-sm text-gray-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {new Date().getFullYear()} Cravora. All rights reserved.
-          </p>
-
-          <p>
-            Made with <span className="text-orange-500">♥</span> for food lovers.
-          </p>
-        </div>
-      </div>
-    </footer>
+      </nav>
+    </>
   );
 };
 
-export default Footer;
+export default Header;
