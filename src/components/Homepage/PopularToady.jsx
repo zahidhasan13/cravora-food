@@ -15,12 +15,12 @@ const PopularToady = () => {
           </span>
 
           <h2 className="mt-2 text-3xl md:text-4xl lg:text-5xl font-bold">
-            Taste Something Special
+            What’s Popular Right Now
           </h2>
 
           <p className="mt-3 max-w-2xl mx-auto text-gray-400">
-            Discover one of our most-loved dishes, prepared with fresh
-            ingredients and packed with delicious flavors.
+            Explore dishes people are loving today and find something delicious
+            for your next meal.
           </p>
         </div>
         {/* Popular Food */}

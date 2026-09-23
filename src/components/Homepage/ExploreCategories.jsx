@@ -26,12 +26,12 @@ const ExploreCategories = async () => {
           </span>
 
           <h2 className="mt-2 text-3xl md:text-4xl lg:text-5xl font-bold">
-            Taste Something Special
+            Find Something You’ll Love
           </h2>
 
           <p className="mt-3 max-w-2xl mx-auto text-gray-600">
-            Discover one of our most-loved dishes, prepared with fresh
-            ingredients and packed with delicious flavors.
+            Browse through different food categories and discover your next
+            favorite dish.
           </p>
         </div>
         {/* Popular Food */}
