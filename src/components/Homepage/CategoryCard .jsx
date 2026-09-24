@@ -1,14 +1,17 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const CategoryCard = ({ category }) => {
   return (
     <div className="group overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-      <div className="aspect-square overflow-hidden">
-        <img
+      <div className="relative aspect-square overflow-hidden">
+        <Image
           src={category.categoryImg}
           alt={category.categoryName}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+          fill
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
       </div>
 

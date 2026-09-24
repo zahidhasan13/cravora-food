@@ -28,18 +28,12 @@ const AboutHero = () => {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href="/explore"
-              className="inline-flex items-center justify-center rounded-full bg-orange-500 px-6 py-3.5 font-semibold text-white transition hover:-translate-y-1 hover:bg-orange-600 hover:shadow-lg"
-            >
+            <Link href="/explore" className="primary-btn">
               Explore Food
               <span className="ml-2 text-lg">→</span>
             </Link>
 
-            <Link
-              href="/categories"
-              className="inline-flex items-center justify-center rounded-full border border-orange-200 bg-white px-6 py-3.5 font-semibold text-orange-600 transition hover:border-orange-500 hover:bg-orange-100"
-            >
+            <Link href="/categories" className="secondary-btn">
               Browse Categories
             </Link>
           </div>

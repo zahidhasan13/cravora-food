@@ -24,7 +24,7 @@ const CravingCTA = () => {
 
           <Link
             href="/explore"
-            className="secondary-btn mt-8 inline-flex items-center gap-2"
+            className="mt-8 inline-block bg-white text-black px-3 py-3 rounded uppercase font-semibold border-2 border-transparent hover:bg-transparent hover:border-2 hover:border-white hover:text-white transition-all duration-300"
           >
             Explore Food
             <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">

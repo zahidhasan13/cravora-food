@@ -1,4 +1,5 @@
 import { useCart } from "@/context/CartContext";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -11,11 +12,12 @@ const FoodCard = ({ food }) => {
     <div className="group overflow-hidden rounded-2xl bg-white shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl">
       {/* Image */}
       <div className="relative aspect-4/3 overflow-hidden">
-        <img
+        <Image
           src={foodImg}
           alt={title}
-          fill
-          className="object-cover transition duration-500 group-hover:scale-105"
+          className="object-cover transition duration-500 group-hover:scale-105 h-full w-full"
+          width={500}
+          height={500}
         />
         {/* Category */}
         <span className="absolute left-4 top-4 rounded-full bg-orange-500 px-3 py-1 text-sm font-medium text-white">
@@ -24,7 +26,7 @@ const FoodCard = ({ food }) => {
       </div>
 
       {/* Content */}
-      <div className="p-5">
+      <div className="p-4">
         <h3 className="line-clamp-1 text-xl font-bold text-gray-900">
           {title}
         </h3>
